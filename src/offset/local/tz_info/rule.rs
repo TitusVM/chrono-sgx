@@ -774,6 +774,8 @@ pub(crate) const fn is_leap_year(year: i32) -> bool {
 
 #[cfg(test)]
 mod tests {
+    use std::vec;
+    use std::vec::Vec;
     use super::super::timezone::Transition;
     use super::super::{Error, TimeZone};
     use super::{AlternateTime, LocalTimeType, RuleDay, TransitionRule};

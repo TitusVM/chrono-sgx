@@ -2250,6 +2250,9 @@ mod tests {
     use crate::time_delta::TimeDelta;
     use crate::{Datelike, Weekday};
     use std::{i32, u32};
+    use std::format;
+    use std::eprintln;
+    use std::vec;
 
     #[test]
     fn diff_months() {

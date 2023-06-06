@@ -574,6 +574,7 @@ impl str::FromStr for DateTime<FixedOffset> {
 #[cfg(test)]
 #[test]
 fn test_parse() {
+    use std::eprintln;
     use super::*;
 
     // workaround for Rust issue #22255
@@ -1378,6 +1379,7 @@ fn test_rfc2822() {
     use super::*;
     use crate::offset::FixedOffset;
     use crate::DateTime;
+    use std::string::String;
 
     // Test data - (input, Ok(expected result after parse and format) or Err(error code))
     let testdates = [
@@ -1441,6 +1443,7 @@ fn test_rfc2822() {
         parse(&mut parsed, date, [Item::Fixed(Fixed::RFC2822)].iter())?;
         parsed.to_datetime()
     }
+
 
     fn fmt_rfc2822_datetime(dt: DateTime<FixedOffset>) -> String {
         dt.format_with_items([Item::Fixed(Fixed::RFC2822)].iter()).to_string()
@@ -1511,6 +1514,8 @@ fn test_rfc3339() {
     use super::*;
     use crate::offset::FixedOffset;
     use crate::DateTime;
+    use std::string::String;
+    use std::eprintln;
 
     // Test data - (input, Ok(expected result after parse and format) or Err(error code))
     let testdates = [

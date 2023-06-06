@@ -246,6 +246,8 @@ impl<Tz: TimeZone> Sub<FixedOffset> for DateTime<Tz> {
 mod tests {
     use super::FixedOffset;
     use crate::offset::TimeZone;
+    use sgx_tstd as std;
+    use std::format;
 
     #[test]
     fn test_date_extreme_offset() {

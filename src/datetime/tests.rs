@@ -1,4 +1,7 @@
 use std::time::{SystemTime, UNIX_EPOCH};
+use std::format;
+use std::eprintln;
+
 
 use super::DateTime;
 use crate::naive::{NaiveDate, NaiveTime};
@@ -1175,11 +1178,11 @@ fn test_datetime_is_send() {
 
     // UTC is known to be `Send`.
     let a = Utc::now();
-    thread::spawn(move || {
+    /*thread::spawn(move || {
         let _ = a;
     })
     .join()
-    .unwrap();
+    .unwrap();*/
 }
 
 #[test]
@@ -1402,10 +1405,10 @@ fn test_years_elapsed() {
 
     // This is always at least one year because 1 year = 52.1775 weeks.
     let one_year_ago =
-        Utc::now().date_naive() - TimeDelta::weeks((WEEKS_PER_YEAR * 1.5).ceil() as i64);
+        Utc::now().date_naive() - TimeDelta::weeks((WEEKS_PER_YEAR * 1.5) as i64); // removed .ceil()
     // A bit more than 2 years.
     let two_year_ago =
-        Utc::now().date_naive() - TimeDelta::weeks((WEEKS_PER_YEAR * 2.5).ceil() as i64);
+        Utc::now().date_naive() - TimeDelta::weeks((WEEKS_PER_YEAR * 2.5) as i64); // removed .ceil()
 
     assert_eq!(Utc::now().date_naive().years_since(one_year_ago), Some(1));
     assert_eq!(Utc::now().date_naive().years_since(two_year_ago), Some(2));

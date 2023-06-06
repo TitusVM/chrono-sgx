@@ -2,6 +2,7 @@ use std::u32;
 
 use super::NaiveTime;
 use crate::{TimeDelta, Timelike};
+use std::{format, eprintln};
 
 #[test]
 fn test_time_from_hms_milli() {
@@ -261,6 +262,7 @@ fn test_date_from_str() {
         "09:08:07.12345678912",
         "23:59:60.373929310237",
     ];
+    
     for &s in &valid {
         eprintln!("test_time_parse_from_str valid {:?}", s);
         let d = match s.parse::<NaiveTime>() {

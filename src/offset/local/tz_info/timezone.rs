@@ -1,9 +1,11 @@
 //! Types related to a time zone.
-
+use sgx_tstd as std;
 use std::fs::{self, File};
 use std::io::{self, Read};
 use std::path::{Path, PathBuf};
 use std::{cmp::Ordering, fmt, str};
+use std::vec;
+use std::vec::Vec;
 
 use super::rule::{AlternateTime, TransitionRule};
 use super::{parser, Error, DAYS_PER_WEEK, SECONDS_PER_DAY};
@@ -638,6 +640,9 @@ const SECONDS_PER_28_DAYS: i64 = SECONDS_PER_DAY * 28;
 
 #[cfg(test)]
 mod tests {
+    use sgx_tstd as std;
+    use std::vec;
+    use std::vec::Vec;
     use super::super::Error;
     use super::{LeapSecond, LocalTimeType, TimeZone, TimeZoneName, Transition, TransitionRule};
 

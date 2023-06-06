@@ -376,7 +376,8 @@
 #![deny(dead_code)]
 #![cfg_attr(not(any(feature = "std", test)), no_std)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
-
+#![no_std]
+extern crate sgx_tstd as std;
 use core::fmt;
 
 mod time_delta;

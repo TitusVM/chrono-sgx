@@ -2,6 +2,7 @@ use std::io::{self, ErrorKind};
 use std::iter;
 use std::num::ParseIntError;
 use std::str::{self, FromStr};
+use std::vec::Vec;
 
 use super::rule::TransitionRule;
 use super::timezone::{LeapSecond, LocalTimeType, TimeZone, Transition};

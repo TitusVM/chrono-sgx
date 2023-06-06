@@ -3,6 +3,9 @@
 
 //! The UTC (Coordinated Universal Time) time zone.
 
+use sgx_tstd as std;
+
+
 use core::fmt;
 #[cfg(all(
     feature = "clock",

@@ -44,6 +44,9 @@ use core::fmt::Write;
 use core::str::FromStr;
 #[cfg(any(feature = "std", test))]
 use std::error::Error;
+use std::boxed::Box;
+use std::string::String;
+use std::string::ToString;
 
 #[cfg(any(feature = "alloc", feature = "std", test))]
 use crate::naive::{NaiveDate, NaiveTime};

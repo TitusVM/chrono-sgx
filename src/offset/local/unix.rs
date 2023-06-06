@@ -8,8 +8,10 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use std::{cell::RefCell, collections::hash_map, env, fs, hash::Hasher, time::SystemTime};
-
+use std::string::ToString;
+use std::{cell::RefCell, collections::hash_map, fs, env, hash::Hasher, time::SystemTime};
+use std::thread_local;
+use std::format;
 use super::tz_info::TimeZone;
 use super::{FixedOffset, NaiveDateTime};
 use crate::{Datelike, LocalResult};
@@ -78,7 +80,8 @@ const TZDB_LOCATION: &str = "/usr/share/lib/zoneinfo";
 const TZDB_LOCATION: &str = "/usr/share/zoneinfo";
 
 fn fallback_timezone() -> Option<TimeZone> {
-    let tz_name = iana_time_zone::get_timezone().ok()?;
+    // Small hack because iana_time_zone requires std
+    let tz_name = "Europe/Zurich".to_string(); //iana_time_zone::get_timezone().ok()?
     #[cfg(not(target_os = "android"))]
     let bytes = fs::read(format!("{}/{}", TZDB_LOCATION, tz_name)).ok()?;
     #[cfg(target_os = "android")]

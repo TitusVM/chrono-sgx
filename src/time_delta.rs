@@ -9,6 +9,7 @@
 // except according to those terms.
 
 //! Temporal quantification
+use sgx_tstd as std;
 
 use core::ops::{Add, Div, Mul, Neg, Sub};
 use core::time::Duration as StdDuration;
@@ -488,6 +489,8 @@ impl arbitrary::Arbitrary<'_> for TimeDelta {
 
 #[cfg(test)]
 mod tests {
+
+    use std::{vec, format};
     use super::{OutOfRangeError, TimeDelta, MAX, MIN};
     use std::time::Duration as StdDuration;
     use std::{i32, i64};

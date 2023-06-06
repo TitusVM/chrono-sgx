@@ -508,9 +508,12 @@ impl<'a> Iterator for StrftimeItems<'a> {
     }
 }
 
+
+
 #[cfg(test)]
 #[test]
 fn test_strftime_items() {
+    use std::{vec::Vec, vec, eprintln};
     fn parse_and_collect(s: &str) -> Vec<Item<'_>> {
         // map any error into `[Item::Error]`. useful for easy testing.
         eprintln!("test_strftime_items: parse_and_collect({:?})", s);

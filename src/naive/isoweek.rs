@@ -149,6 +149,7 @@ impl fmt::Debug for IsoWeek {
 mod tests {
     use crate::naive::{internals, NaiveDate};
     use crate::Datelike;
+    use std::format;
 
     #[test]
     fn test_iso_week_extremes() {
